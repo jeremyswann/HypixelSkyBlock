@@ -3,7 +3,7 @@ FROM eclipse-temurin:25-jdk
 WORKDIR /app
 
 # Install unzip for extracting files
-RUN apt-get update && apt-get install -y jq unzip screen && apt-get clean
+RUN apt-get update && apt-get install -y jq unzip screen nano && apt-get clean
 
 # Download SkyBlockCore.jar
 ADD https://github.com/Swofty-Developments/HypixelSkyBlock/releases/download/latest/HypixelCore.jar HypixelCore.jar
@@ -58,3 +58,4 @@ RUN chmod +x entrypoint.sh
 RUN sed -i "s/ip: 'localhost'/ip: '0.0.0.0'/" ./settings.yml
 
 CMD ["sh", "entrypoint.sh"]
+
