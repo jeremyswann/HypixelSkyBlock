@@ -28,13 +28,14 @@ RUN cp configuration_files/config.yml ./configuration/config.yml
 # Make required folders
 RUN mkdir -p ./configuration/skyblock/islands
 
-RUN cp configuration_files/world.zip ./world.zip
+RUN mv configuration_files/world ./configuration/world
 
-RUN unzip world.zip -d ./configuration && rm world.zip
+# RUN unzip world.zip -d ./configuration && rm world.zip
 
 # Move to islands folder
-RUN mv ./configuration/hypixel_hub ./configuration/skyblock/islands/hypixel_skyblock_hub
-RUN mv ./configuration/hypixel_island_template ./configuration/skyblock/islands/hypixel_skyblock_island_template
+RUN mv ./configuration/world/hypixel_hub ./configuration/skyblock/islands/hypixel_skyblock_hub
+RUN mv ./configuration/world/hypixel_island_template ./configuration/skyblock/islands/hypixel_skyblock_island_template
+RUN mv ./configuration/world/hypixel_prototype_lobby ./configuration/hypixel_prototype_lobby
 
 # Expose the required ports
 EXPOSE 25565 65535 8080 20000
